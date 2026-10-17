@@ -1,0 +1,3 @@
+# Core research code (src/, tests/) uses the Python standard library only.
+# matplotlib is required only by scripts/fig_compare.py to generate Figure 1.
+matplotlib>=3.8

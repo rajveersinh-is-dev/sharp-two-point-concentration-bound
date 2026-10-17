@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "A Sharp Two-Point Moment-Generating-Function Bound for Sums of Independent Bounded Random Variables"
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Pardeshi
+    given-names: Rajveersinh Vishal
+    affiliation: "Independent Researcher"
+    orcid: ""
+date-released: 2026-10-17
+doi: ""
+url: "https://github.com/daveaddams91-dev/sharp-two-point-concentration-bound"
+type: software
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/daveaddams91-dev/sharp-two-point-concentration-bound"
+keywords:
+  - concentration inequality
+  - Hoeffding's lemma
+  - Chernoff bound
+  - bounded random variables
+abstract: >
+  A refined concentration inequality for sums of independent bounded random
+  variables based on the sharp two-point moment-generating-function bound,
+  with an explicit improvement over Hoeffding's inequality and reproducible
+  numerical verification. Classified as an incremental/expository refinement
+  of classical material (Hoeffding 1963); not a new fundamental inequality.
+preferred-citation:
+  type: software
+  authors:
+    - family-names: Pardeshi
+      given-names: Rajveersinh Vishal
+  date-released: 2026-10-17
+  title: "A Sharp Two-Point Concentration Bound"
+  version: "1.0.0"
+  url: "https://github.com/daveaddams91-dev/sharp-two-point-concentration-bound"
