@@ -22,12 +22,14 @@ The script:
   (c) validates it against Monte Carlo simulation,
   (d) demonstrates a parameter regime where it beats Hoeffding.
 """
+from __future__ import annotations
+
 import math
-from bisect import bisect_left
 
 # ---------------------------------------------------------------------------
 # Core bound
 # ---------------------------------------------------------------------------
+
 
 def two_point_mgf_bound(mus, lam):
     """prod_i (1 + mu_i (e^lam - 1)) computed stably in log space."""
@@ -39,13 +41,22 @@ def two_point_mgf_bound(mus, lam):
     return logp
 
 
-def bound_upper_tail(mus, t):
+def bound_upper_tail(mus, t) -> tuple:
     """inf_{lam>0} exp(-lam (mu + t)) prod_i (1 + mu_i (e^lam - 1))."""
     mu = sum(mus)
     n = len(mus)
 
     def neg_log_bound(lam):
         # log of the RHS = -lam(mu+t) + sum log(1 + m_i (e^lam - 1))
+        """Neg log bound.
+        
+        Args:
+            lam:
+        
+        Returns:
+            The computed result
+        
+        """
         return -lam * (mu + t) + two_point_mgf_bound(mus, lam)
 
     # Convex in lam; minimise by golden-section on [lo, hi].
@@ -64,11 +75,31 @@ def bound_upper_tail(mus, t):
 
 
 def hoeffding_upper_tail(n, t):
+    """Hoeffding upper tail.
+    
+    Args:
+        n:
+        t:
+    
+    Returns:
+        The computed result
+    
+    """
     return math.exp(-2.0 * t * t / n)
 
 
 def bernstein_upper_tail(v, t):
     # variables in [0,1]: |X_i - mu_i| <= 1, use b-a = 1
+    """Bernstein upper tail.
+    
+    Args:
+        v:
+        t:
+    
+    Returns:
+        The computed result
+    
+    """
     return math.exp(-(t * t) / (2.0 * (v + t / 3.0)))
 
 
@@ -100,7 +131,11 @@ def monte_carlo_tail(mus, t, trials, seed=0):
 # Demonstration
 # ---------------------------------------------------------------------------
 
+
 def demonstrate():
+    """Demonstrate.
+    
+    """
     print("=" * 70)
     print("Refined (two-point MGF) concentration bound - demonstration")
     print("=" * 70)
