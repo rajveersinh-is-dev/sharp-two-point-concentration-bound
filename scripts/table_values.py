@@ -1,8 +1,8 @@
 """Print table rows (seed 7, 1e5 trials) to copy into the manuscript."""
 import math, os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.concentration import bound_upper_tail, hoeffding_upper_tail, monte_carlo_tail
-from math import comb
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 n = 100
 t = 20
