@@ -2,21 +2,38 @@
 Generate numerical results for the manuscript: improvement of the tight
 two-point MGF concentration bound over Hoeffding, across means and t.
 """
+from __future__ import annotations
+
+from math import comb
 import math
+
 from src.concentration import (
+
     bound_upper_tail, hoeffding_upper_tail, bernstein_upper_tail,
     monte_carlo_tail,
 )
-from math import comb
 
 
-def bernoulli_kl(q, m):
+def bernoulli_kl(q, m) -> float:
+    """Bernoulli kl.
+    
+    Args:
+        q:
+        m:
+    
+    Returns:
+        float: Result of type float
+    
+    """
     if q <= 0 or q >= 1 or m <= 0 or m >= 1:
         return float('inf')
     return q * math.log(q / m) + (1 - q) * math.log((1 - q) / (1 - m))
 
 
 def improvement_table():
+    """Improvement table.
+    
+    """
     print("Improvement of two-point bound over Hoeffding (upper tail).")
     print("n=100, t fixed; vary mean m. Bernoulli variables (worst case).")
     print(f"{'m':>6} {'t':>6} {'mu':>8} {'two-pt':>10} {'Hoeff.':>10} {'ratio H/2p':>11} {'MC':>8} {'valid'}")

@@ -2,14 +2,15 @@
 Generate Figure 1: two-point bound vs Hoeffding vs exact binomial vs Monte Carlo
 across mean m (n=100, t=20). Saves figures/fig1_compare.pdf and .png.
 """
-import math, os, sys
 from math import comb
+import math, os, sys
+
+from src.concentration import bound_upper_tail, hoeffding_upper_tail, monte_carlo_tail
 import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+matplotlib.use("Agg")
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.concentration import bound_upper_tail, hoeffding_upper_tail, monte_carlo_tail
 
 n = 100
 t = 20
